@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="25px" height="24px" viewBox="0 0 25 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Combined Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home" transform="translate(-1660.000000, -422.000000)" stroke="#FFFFFF" fill-rule="nonzero" fill="#FFFFFF">
+            <g id="Menu" transform="translate(1593.000000, 371.000000)">
+                <g id="Group-5" transform="translate(67.000000, 0.000000)">
+                    <path d="M3.1536536,52.2742704 L13.990139,52.2742704 L13.990139,54.0662281 L3.1536536,54.0662281 C2.95042946,54.0662281 2.79195771,54.2247334 2.79195771,54.4246334 L2.79195771,71.6274 C2.79195771,71.8236974 2.9539404,71.9858052 3.1507632,71.9858052 L21.0695124,71.9858052 C21.2649101,71.9858052 21.4283179,71.8229073 21.4283179,71.6294862 L21.4283179,61.2599858 L23.2202756,61.2599858 L23.2202756,71.6294862 C23.2202756,72.8159467 22.2512102,73.777763 21.0695124,73.777763 L3.1507632,73.777763 C1.96292948,73.777763 1,72.8120278 1,71.6274 L1,54.4246334 C1,53.2370207 1.95880072,52.2742704 3.1536536,52.2742704 Z M14.2604871,62.5011644 L12.9933816,61.234059 L23.2274406,51 L24.494546,52.2671054 L14.2604871,62.5011644 Z" id="Combined-Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

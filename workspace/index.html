@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Teste</title>
+
+		<link rel="stylesheet" href="styles.css">
+	</head>
+	<body>
+		<aside class="top">
+		  <button class="refresh" onclick="newProverbio()"><img class="rotate" src="http://www.joaosaro.com/proverbiosdislexicos/assets/images/refresh-button.svg" alt=""/></button>
+		</aside>
+		<main class="container" id="container">
+		  <canvas id="canvas"></canvas>
+		  <div class="proverbio">
+		    <div class="proverbioA">
+		      <p id="one">Grão a grão</p>
+		    </div>
+		    <div class="proverbioB">
+		      <p id="two">enche a galinha o papo</p>
+		    </div>
+		  </div>
+		  <div class="brand">Provérbios Disléxicos</div>
+		</main>
+		<aside class="bottom">
+		  <div class="option">
+		    <label>Pick a color:
+		      <div class="colors-bar">
+		        <button class="color-item color-1" value="#3498DB" onclick="colorUpdate(1)"></button>
+		        <button class="color-item color-2" value="#1ABC9C" onclick="colorUpdate(2)"></button>
+		        <button class="color-item color-3" value="#9B59B6" onclick="colorUpdate(3)"></button>
+		        <button class="color-item color-4" value="#E67E22" onclick="colorUpdate(4)"></button>
+		        <button class="color-item color-5" value="#E74C3C" onclick="colorUpdate(5)"></button>
+		        <button class="color-item color-6" value="#F1C40F" onclick="colorUpdate(6)"></button>
+		        <button class="color-item color-7" value="#27AE60" onclick="colorUpdate(7)"></button>
+		      </div>
+		    </label>
+		  </div>
+		</aside>
+	</body>
+</html>

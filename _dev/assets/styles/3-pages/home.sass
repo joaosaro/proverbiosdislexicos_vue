@@ -1,0 +1,44 @@
+$colorsArray: (1:#3498DB, 2:#1ABC9C, 3:#9B59B6, 4:#E67E22, 5:#E74C3C, 6:#F1C40F, 7:#27AE60)
+
+@each $key, $color in $colorsArray
+	.color-#{$key}
+		background-color: #{$color}
+
+body
+	font-family: 'Raleway', sans-serif
+
+.toolbar,
+.social,
+.credits
+	display: none
+
+main
+	position: relative
+	width: 100vw
+	height: 100vh
+	min-width: 320px
+	min-height: 320px
+	max-width: 200vh
+	max-height: 200vw
+	overflow: hidden
+
+#svg-canvas
+	position: absolute
+	z-index: -1
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	min-width: 320px
+	min-height: 320px
+	max-width: 200vh
+	max-height: 200vw
+	fill: map-get($colorsArray, 1)
+
+.proverbio
+	position: relative
+	font-size: 38px
+	font-weight: 700
+	color: white
+	text-transform: uppercase
+	text-align: center

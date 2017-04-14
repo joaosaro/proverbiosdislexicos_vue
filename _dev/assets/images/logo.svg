@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="189px" height="54px" viewBox="0 0 189 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home" transform="translate(-46.000000, -43.000000)" fill="#FFFFFF">
+            <g id="Logo" transform="translate(44.000000, 35.000000)">
+                <text id="P/D" font-family="Raleway-Black, Raleway" font-size="36" font-weight="700" letter-spacing="3.5999999">
+                    <tspan x="0" y="34">P/D</tspan>
+                </text>
+                <text id="provérbios-disléxico" font-family="Raleway-Regular, Raleway" font-size="12" font-weight="normal" letter-spacing="2.22600007">
+                    <tspan x="1.13636364" y="61">provérbios disléxicos</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
