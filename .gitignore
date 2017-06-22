@@ -6,3 +6,4 @@ _site/
 #files
 .editorconfig
 *.log
+gulpfile.js
