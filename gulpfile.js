@@ -31,6 +31,12 @@ function errorLog(error) {
   this.emit('end');
 }
 
+//Json Files
+var data = {
+    //Modules
+  //  "proverbios"    : require('http://localhost:8888/proverbios-backend/api/proverbios')
+};
+
 //Jade render
 gulp.task('jade', function() {
 

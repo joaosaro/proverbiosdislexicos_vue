@@ -2,6 +2,8 @@
 node_modules/
 .sass-cache/
 _site/
+_dev/_min
+workspace/
 
 #files
 .editorconfig
