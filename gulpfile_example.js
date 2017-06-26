@@ -34,7 +34,7 @@ function errorLog(error) {
 //Json Files
 var data = {
     //Modules
-  //  "proverbios"    : require('http://localhost:8888/proverbios-backend/api/proverbios')
+    "proverbios"    : require('http://localhost:8888/proverbios-backend/api/proverbios')
 };
 
 //Jade render
@@ -85,7 +85,7 @@ gulp.task('others', function(){
 gulp.task('tinypng', function () {
 	gulp.src(siteDev + 'assets/img/**/*.{png,jpg,jpeg}')
 		.pipe(tinypng({
-			key: 'OXJSSh5FX5UKWFbTw9UmYbAFuDixLT-E',
+			key: '', //put your key
 			sigFile: 'images/.tinypng-sigs',
 			log: true
 		}))
