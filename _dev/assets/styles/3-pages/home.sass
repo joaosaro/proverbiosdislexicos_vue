@@ -35,10 +35,48 @@ main
 	max-height: 200vw
 	fill: map-get($colorsArray, 1)
 
+.logo
+	margin: 30px
+
+	.logo-bold
+		font-weight: 900
+		color: white
+		font-size: 36px
+		letter-spacing: 3.6px
+
+	.logo-long
+		font-weight: 300
+		color: white
+		font-size: 12px
+		letter-spacing: 2.29px
+
+$margin: 10vh
+$p-height: 100vh - $margin* 2
 .proverbio
-	position: relative
-	font-size: 38px
+	position: absolute
+	top: 0
+
+	display: flex
+	flex-flow: column nowrap
+	justify-content: center
+
+	height: $p-height
+	width: 100vw
+	margin:
+		top: $margin
+
+	font-size: 50px
 	font-weight: 700
 	color: white
 	text-transform: uppercase
-	text-align: center
+	text-align: left
+
+	.one
+		margin-bottom: $margin
+
+	.two
+		margin-top: $margin
+
+	> div
+		width: 60vw
+		margin-left: 20vw
