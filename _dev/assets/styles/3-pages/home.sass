@@ -4,6 +4,9 @@ $colorsArray: (1:#3498DB, 2:#1ABC9C, 3:#9B59B6, 4:#E67E22, 5:#E74C3C, 6:#F1C40F,
 	.color-#{$key}
 		background-color: #{$color}
 
+*
+	box-sizing: border-box
+
 body
 	font-family: 'Raleway', sans-serif
 
@@ -50,32 +53,52 @@ main
 		font-size: 12px
 		letter-spacing: 2.29px
 
-$margin: 10vh
-$p-height: 100vh - $margin* 2
+	@media (max-width: 760px)
+		.logo-bold
+			font-size: 24px
+			letter-spacing: 3px
+
+		.logo-long
+			font-size: 8px
+			letter-spacing: 2px
+
+$p-height: 75vh
+$p-margin: (100vh - $p-height)/2
 .proverbio
 	position: absolute
 	top: 0
 
-	display: flex
-	flex-flow: column nowrap
-	justify-content: center
-
 	height: $p-height
 	width: 100vw
 	margin:
-		top: $margin
+		top: $p-margin
 
-	font-size: 50px
+	font-size: 6vh
 	font-weight: 700
 	color: white
 	text-transform: uppercase
 	text-align: left
 
+	@media (max-width: 760px)
+		font-size: 4vh
+
 	.one
-		margin-bottom: $margin
+		//background-color: rgba(orange, .3)
+		height: calc(85%/2)
+		padding-bottom: 10px
+		display: flex
+		flex-direction: column
+		justify-content: flex-end
+
+	.separator
+		height: 15%
+		//background: pink
 
 	.two
-		margin-top: $margin
+		flex: 1 1 200px
+		height: calc(85%/2)
+		//background-color: rgba(green, .3)
+		padding-top: 50px
 
 	> div
 		width: 60vw
