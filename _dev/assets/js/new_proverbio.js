@@ -34,7 +34,7 @@ function newProverbio(){
     one.innerHTML = randomSentenceA;
   }
 
-  if (randomSentenceA.length > minLenght) {
+  if (randomSentenceB.length > minLenght) {
     two.innerHTML = breakSentence(randomSentenceB);
   } else {
     two.innerHTML = randomSentenceB;
