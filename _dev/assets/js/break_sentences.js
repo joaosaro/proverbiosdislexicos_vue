@@ -1,19 +1,16 @@
-function countWords(str) {
-  return str.trim().split(/\s+/).length;
+function breakSentence(sentence) {
+  var middle = Math.floor(sentence.length / 2);
+  var before = sentence.lastIndexOf(' ', middle);
+  var after = sentence.indexOf(' ', middle + 1);
+
+  if (before == -1 || (after != -1 && middle - before >= after - middle)) {
+    middle = after;
+  } else {
+      middle = before;
+  }
+
+  var s1 = sentence.substr(0, middle);
+  var s2 = sentence.substr(middle + 1);
+
+  return s1 + '<br>'+ s2;
 }
-
-var wordsProverbioA = countWords(one.textContent);
-var lettersProverbioA = one.textContent.length;
-
-console.log(wordsProverbioA + " | " + lettersProverbioA);
-
-function cut(n) {
-    return function textCutter(i, text) {
-        var short = text.substr(0, n);
-        if (/^\S/.test(text.substr(n)))
-            return short.replace(/\s+\S*$/, "");
-        return short;
-    };
-}
-
-one.textContent(cut(20));

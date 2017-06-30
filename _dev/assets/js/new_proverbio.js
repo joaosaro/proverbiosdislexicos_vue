@@ -25,8 +25,20 @@ function newProverbio(){
   var randomSentenceB = proverbiosB[randomNumberB];
 	var finalSentence = randomSentenceA + " " + randomSentenceB;
 
-  one.innerHTML = randomSentenceA;
-  two.innerHTML = randomSentenceB;
+  //minimum lenght to insert break tag
+  var minLenght = 19;
+
+  if (randomSentenceA.length > minLenght) {
+    one.innerHTML = breakSentence(randomSentenceA);
+  } else {
+    one.innerHTML = randomSentenceA;
+  }
+
+  if (randomSentenceA.length > minLenght) {
+    two.innerHTML = breakSentence(randomSentenceB);
+  } else {
+    two.innerHTML = randomSentenceB;
+  }
 
 	var backColorNum = startCount % 7 + 1;
   //colorUpdate(backColorNum);
