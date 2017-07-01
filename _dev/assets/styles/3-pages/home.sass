@@ -1,8 +1,13 @@
-$colorsArray: (1:#3498DB, 2:#1ABC9C, 3:#9B59B6, 4:#E67E22, 5:#E74C3C, 6:#F1C40F, 7:#27AE60)
+$imgPath: 'assets/images/'
+$colorsArray: (1: #3498DB, 2: #1DDFB9, 3: #FFFB37, 4: #9B59B6, 5: #1ABC9C, 6: #E67E22, 7: #E74C3C, 8: #F1C40F)
+$backgroundTransition: background-color 1s
 
 @each $key, $color in $colorsArray
 	.color-#{$key}
 		background-color: #{$color}
+
+\:root
+	--color: #{map-get($colorsArray, 1)}
 
 *
 	box-sizing: border-box
@@ -10,7 +15,6 @@ $colorsArray: (1:#3498DB, 2:#1ABC9C, 3:#9B59B6, 4:#E67E22, 5:#E74C3C, 6:#F1C40F,
 body
 	font-family: 'Raleway', sans-serif
 
-.toolbar,
 .social,
 .credits
 	display: none
@@ -36,7 +40,8 @@ main
 	min-height: 320px
 	max-width: 200vh
 	max-height: 200vw
-	fill: map-get($colorsArray, 1)
+	transition: fill 1s
+	fill: var(--color)
 
 .logo
 	margin: 30px
@@ -103,3 +108,95 @@ $p-margin: (100vh - $p-height)/2
 	> div
 		width: 60vw
 		margin-left: 20vw
+
+.toolbar
+	position: fixed
+	right: 0
+	top: 20%
+	transform: translateX(42%)
+	transition: transform .3s
+
+	&.is-open
+		transform: translateX(0)
+
+.toolbar--side
+	img
+		display: block
+		margin-left: auto
+		padding: 10px
+		cursor: pointer
+
+.toolbar--menu
+	display: flex
+
+	.options
+		display: flex
+		flex-flow: column nowrap
+		justify-content: space-around
+
+		button
+			display: flex
+			align-items: center
+			outline: none
+			background:
+				color: transparent
+
+			span
+				color: white
+				font-size: 10px
+				font-weight: 900
+				letter-spacing: 1.11px
+				line-height: 12px
+				text-transform: lowercase
+				text-align: right
+				width: 12ch
+
+			figure
+				margin: 5px 10px
+
+				img
+					height: 20px
+
+	.pallete
+		$padding: 20px
+		height: 120px
+		width: 60px + $padding
+		padding-left: $padding/2
+		border-radius: $padding 0 0 $padding
+		background: white
+		display: flex
+		flex-wrap: wrap
+		justify-content: center
+		overflow: hidden
+
+		&.is-open
+			transform: translateX(0)
+
+		$bt-size: 18px
+		$bt-margin: $bt-size/3
+		.color-item
+			height: $bt-size
+			width: $bt-size
+			margin: $bt-margin
+			border: 0.5px solid rgba(255,255,255,.58)
+			border-radius: 50%
+			transition: border .3s
+			outline: none
+
+			&.active
+				position: relative
+				&::before
+					content: ""
+					position: absolute
+					top: 0
+					left: 0
+					height: $bt-size
+					width: $bt-size
+					background:
+						image: url($imgPath + 'color-check.svg')
+						size: contain
+						position: center
+						repeat: no-repeat
+
+			&:hover
+				border: .5px solid #999

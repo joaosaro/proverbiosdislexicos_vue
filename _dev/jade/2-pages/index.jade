@@ -1,48 +1,12 @@
-doctype html
-head
-	meta(charset="utf-8")
-	meta(http-equiv='X-UA-Compatible', content='IE=edge')
-	meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
-
-	title Provérbios Disléxicos
-	style
-		include ../../_min/css/main.css
-
+include ../0-setup/variables.jade
+include ../0-setup/head.jade
 body
 	main#container
-		include ../../assets/images/canvas.svg
-
-		div.logo
-			div.logo-bold P/D
-			div.logo-long Provérbios Disléxicos
-		
-		div.proverbio
-			div#one.one Isto é
-			div.separator
-			div#two.two um provérbio
-		
-		canvas#canvas(style="visibility: hidden; position:absolute; left: -5000px;")
-
-	nav.toolbar
-		ul
-			li Fresh one
-				img(src="assets/images/refresh-button.svg", alt="")
-			li Editar texto
-				img(src="assets/images/editor-button.svg", alt="")
-			li Alterar cor
-				img(src="assets/images/pallete-button.svg", alt="")
-
-	aside.social
-		ul
-			li: img(src="assets/images/social-fb.svg", alt="")
-			li: img(src="assets/images/social-instagram.svg", alt="")
-			li: img(src="assets/images/social-twitter.svg", alt="")
-
-	small.credits © 2017 Powered by ...
+		include ../3-pages-mods/hero-canvas.jade
+		include ../3-pages-mods/export-canvas.jade
+	
+	include ../3-pages-mods/toolbar.jade
+	include ../3-pages-mods/social.jade
 
 	script
-		include ../../_min/js/get_elements.js
-		include ../../_min/js/get_api.js
-		include ../../_min/js/color_update.js	
-		include ../../_min/js/new_proverbio.js
-		include ../../_min/js/break_sentences.js
+		include ../0-setup/scripts.jade

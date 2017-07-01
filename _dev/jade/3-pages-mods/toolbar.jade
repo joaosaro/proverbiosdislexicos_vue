@@ -1,0 +1,34 @@
+aside.toolbar
+    nav.toolbar--menu
+        div.options
+            button(class="refresh", onclick="newProverbio()")
+                span 
+                    | Novo#[br]provérbio
+                figure
+                    img(src="assets/images/refresh-button.svg", alt="")
+            button 
+                span 
+                    | Editar#[br]texto
+                figure
+                    img(src="assets/images/editor-button.svg", alt="")
+            button(onclick="tooglePalette()") 
+                span 
+                    | Alterar#[br]cor
+                figure
+                    img(src="assets/images/pallete-button.svg", alt="")
+
+        div.pallete
+            .colors-bar
+                - var colors = {1:'#3498DB', 2:'#1DDFB9', 3:'#FFFB37', 4:'#9B59B6', 5:'#1ABC9C', 6:'#E67E22', 7:'#E74C3C', 8:'#F1C40F'}
+
+                each hex, key in colors
+                    button(class="color-item color-" + key, 
+                        value= hex, 
+                        onclick='colorUpdate('+key+')')
+
+    div.toolbar--side
+        img(src= imgPath + "arrow.svg", 
+            alt="->", 
+            title="Close Pallete", 
+            onclick="tooglePalette()")
+    
