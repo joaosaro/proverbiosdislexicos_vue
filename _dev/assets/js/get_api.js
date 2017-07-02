@@ -5,4 +5,4 @@ function Get(yourUrl){
     return Httpreq.responseText;
 }
 
-var data = JSON.parse(Get('http://proverbios.joaosaro.com/api/proverbios'));
+var data = JSON.parse(Get('http://proverbios.joaosaro.com/backoffice/api/proverbios'));
