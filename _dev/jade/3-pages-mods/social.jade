@@ -1,7 +1,10 @@
 aside.social
-    button()
-        img(src="assets/images/social-fb.svg", alt="")
-    button()
+    a(onclick="sharePhoto()")
+        img(src="assets/images/social-fb.svg", alt="Isto é o alt")
+    a()
         img(src="assets/images/social-instagram.svg", alt="")
-    button()   
+    a()   
         img(src="assets/images/social-twitter.svg", alt="")
+
+div#status(style="position: fixed; top: 10px; right: 10px; background: rgba(0,0,0,.5); color: white;")
+    

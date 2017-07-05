@@ -27,6 +27,18 @@ main
 	min-height: 320px
 	overflow: hidden
 
+#export-canvas
+	position: absolute
+	top: 0
+	left: 0
+	height: 100%
+	width: 100%
+	background: transparentize(black, .3)
+	z-index: 1000
+	display: flex
+	justify-content: center
+	align-items: center
+
 #svg-canvas
 	position: absolute
 	z-index: -1
@@ -101,6 +113,8 @@ $p-margin: (100vh - $p-height)/2
 	.editable
 		outline: none
 		text-decoration: underline
+			style: wavy
+			color: rgba(white, .75)
 
 	> div
 		width: 60vw
@@ -221,7 +235,7 @@ $p-margin: (100vh - $p-height)/2
 		top: 20px
 		bottom: auto
 
-	button
+	a
 		$width: 30px
 		display: block
 		width: $width
