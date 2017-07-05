@@ -1,10 +1,16 @@
 aside.social
-    a(onclick="sharePhoto()")
+    a(id="create-facebook-bt")
         img(src="assets/images/social-fb.svg", alt="Isto é o alt")
     a()
         img(src="assets/images/social-instagram.svg", alt="")
     a()   
         img(src="assets/images/social-twitter.svg", alt="")
 
-div#status(style="position: fixed; top: 10px; right: 10px; background: rgba(0,0,0,.5); color: white;")
+.modal-facebook
+    div.form-facebook
+        textarea#fb-description(placeholder="O meu comentário")
+        canvas#fb-canvas
     
+        div.buttons
+            a(class="cancel") Cancel
+            a(class="share", onclick="sharePhoto()") Partilhar

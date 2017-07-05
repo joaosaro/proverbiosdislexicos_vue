@@ -21,28 +21,21 @@ function sharePhoto() {
   FB.login(function(response) {
     if (response.status === "connected") {
 
-      console.log("login new connected");
+      console.log("connected...");
 
-      // FB.ui({
-      //   method: "feed",
-      //   link: "http://proverbios.joaosaro.com/assets/images/test_pic.jpg",
-      //   caption: "Em abril, enche a galinha o papo.",
-      //   //url: "http://proverbios.joaosaro.com/assets/images/test_pic.jpg"
-      //   },
-      //   function(response){
-      //     if (!response || response.error) {
-      //         console.log(response.error);
-      //     } else {
-      //         console.log('Post ID: ' + response.id);
-      //     }
-      //   });
+      var message = document.getElementById('fb-description').value;
+      var imageURL = canvas.toDataURL("image/png");
+
+      var decodedPng = Base64Binary.decode(imageURL.substring(imageURL.indexOf(',') + 1, imageURL.length));
+      console.log(decodedPng);
 
       FB.api(
         '/me/photos',
         'post',
         {
-          message: 'Águas mil, trancas à porta',
-          url: 'http://proverbios.joaosaro.com/assets/images/test_pic.jpg'
+          message: message,
+          url: decodedPng
+          //url: 'http://proverbios.joaosaro.com/assets/images/test_pic.jpg'
         }, function(response) {
 
           if (!response || response.error) {

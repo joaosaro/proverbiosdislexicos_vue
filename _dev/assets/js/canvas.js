@@ -1,51 +1,55 @@
 //Get root and canvas
 var root = document.documentElement;
-var canvas = document.getElementById("canvas");
-var ctx = canvas.getContext("2d");
+var canvas = document.getElementById(id);
 
-//set canvas size variable - quad
-var size = 600;
+unction createCanvas(id) {
+	var ctx = canvas.getContext("2d");
 
-//set css variable
-root.style.setProperty('--canvasSize', size + "px");
+	//set canvas size variable - quad
+	var size = 600;
 
-//set canvas size function
-canvas.width = size;
-canvas.height = size;
+	//set css variable
+	root.style.setProperty('--canvasSize', size + "px");
 
-ctx.fillStyle = "#3498DB";
-ctx.fillRect(0, 0, canvas.width, canvas.height);
+	//set canvas size function
+	canvas.width = size;
+	canvas.height = size;
 
-//Logo
-ctx.font="36px 'Raleway', sans-serif";
-ctx.fillStyle = 'white';
-ctx.fillText("P/D",20,20);
+	ctx.fillStyle = "#3498DB";
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-//set key points
-var middleStart = .56 * size;
-var middleFinal = .48 * size;
+	//Logo
+	ctx.font="36px 'Raleway', sans-serif";
+	ctx.fillStyle = 'white';
+	ctx.fillText("P/D",20,20);
 
-//Linear Background
-var angle = middleStart - middleFinal;
-var my_gradient=ctx.createLinearGradient(0,0,angle,size);
-my_gradient.addColorStop(0,"rgba(0,0,0,0)");
-my_gradient.addColorStop(1,"rgba(0,0,0,0.5)");
-ctx.fillStyle=my_gradient;
-ctx.fillRect(0,0,size,size);
+	//set key points
+	var middleStart = .56 * size;
+	var middleFinal = .48 * size;
 
-//stripes
-var stripeWidth = 5,
-		stripeColor = '#fff',
-		stripeMoveA = -stripeWidth / 2 - 9,
-		stripeMoveB = -stripeWidth / 2;
+	//Linear Background
+	var angle = middleStart - middleFinal;
+	var my_gradient=ctx.createLinearGradient(0,0,angle,size);
+	my_gradient.addColorStop(0,"rgba(0,0,0,0)");
+	my_gradient.addColorStop(1,"rgba(0,0,0,0.5)");
+	ctx.fillStyle=my_gradient;
+	ctx.fillRect(0,0,size,size);
 
-ctx.beginPath();
-ctx.moveTo(0, middleStart + stripeMoveA);
-ctx.lineTo(size, middleFinal + stripeMoveA);
-ctx.lineWidth = stripeWidth;
-ctx.strokeStyle = stripeColor;
-ctx.stroke();
+	//stripes
+	var stripeWidth = 5,
+			stripeColor = '#fff',
+			stripeMoveA = -stripeWidth / 2 - 9,
+			stripeMoveB = -stripeWidth / 2;
 
+	ctx.beginPath();
+	ctx.moveTo(0, middleStart + stripeMoveA);
+	ctx.lineTo(size, middleFinal + stripeMoveA);
+	ctx.lineWidth = stripeWidth;
+	ctx.strokeStyle = stripeColor;
+	ctx.stroke();
+};
+
+createCanvas("canvas");
 
 function dlCanvas() {
 
@@ -58,5 +62,3 @@ function dlCanvas() {
 
   this.href = dt;
 };
-
-//document.getElementById("save").addEventListener('click', dlCanvas, false);
