@@ -1,8 +1,9 @@
 //Get root and canvas
 var root = document.documentElement;
-var canvas = document.getElementById(id);
+var canvasRoot = document.getElementById("canvas");
 
-unction createCanvas(id) {
+function createCanvas(id) {
+	var canvas = document.getElementById(id);
 	var ctx = canvas.getContext("2d");
 
 	//set canvas size variable - quad
