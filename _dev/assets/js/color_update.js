@@ -5,6 +5,9 @@ function colorUpdate(nr) {
 	var backgroundDoc = document.body;
 
 	svgcanvas.style.fill = getColor;
+	color = getColor;
+	createCanvas("canvas", color);
+
 	[].forEach.call(allItems, function(el) {
 	 el.classList.remove('active');
 	});

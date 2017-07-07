@@ -3,7 +3,7 @@ $('#editTo').click(function(){
     $div.prop('contenteditable',!isEditable).toggleClass('editable');
 
     //Insert Input
-    var editable = $(".editable").eq(0);
+    var editable = $("#one");
     var elemLength = editable.value.length;
 
     editable.selectionStart = elemLen;

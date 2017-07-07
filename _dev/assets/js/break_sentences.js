@@ -12,5 +12,5 @@ function breakSentence(sentence) {
   var s1 = sentence.substr(0, middle);
   var s2 = sentence.substr(middle + 1);
 
-  return s1 + '<br>'+ s2;
+  return s1 + ' <br>'+ s2;
 }

@@ -3,3 +3,5 @@
 
   initActive.className += " active";
 })(0);
+
+var color = window.getComputedStyle(document.body).getPropertyValue('--color').trim();

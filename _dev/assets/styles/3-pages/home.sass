@@ -160,8 +160,12 @@ $p-margin: (100vh - $p-height)/2
 			align-items: center
 			outline: none
 			cursor: pointer
+			transition: transform .3s
 			background:
 				color: transparent
+
+			&:hover
+				transform: translateX(-20px)
 
 			span
 				color: white
@@ -235,6 +239,14 @@ $p-margin: (100vh - $p-height)/2
 		top: 20px
 		bottom: auto
 
+	div
+		color: white
+		margin: 10px 10px 10px 0
+		font-weight: 300
+		text-decoration: underline
+		text-decoration-style: wavy
+		text-transform: lowercase
+
 	a
 		$width: 30px
 		display: block
@@ -280,7 +292,8 @@ $p-margin: (100vh - $p-height)/2
 	flex-flow: column nowrap
 
 	textarea
-		width: 90%
+		width: 400px
+		max-width: 90%
 		margin: 0 auto
 		outline: none
 		resize: none
@@ -311,6 +324,10 @@ $p-margin: (100vh - $p-height)/2
 	.share
 		$background: var(--color)
 		+button($background)
+
+		&.done
+			color: map-get($colorsArray, 3)
+
 
 // Footer
 .footer

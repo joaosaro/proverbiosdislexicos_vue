@@ -41,7 +41,6 @@ function newProverbio(){
   }
 
 	var backColorNum = startCount % 7 + 1;
-  //colorUpdate(backColorNum);
 	startCount++;
 };
 

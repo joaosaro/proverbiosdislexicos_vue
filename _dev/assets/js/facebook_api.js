@@ -19,18 +19,14 @@ window.fbAsyncInit = function() {
 
 //Create Image module
 function createImage() {
-    var message = "";
-
-    if (message.length > 0) {
-      message = document.getElementById('fb-description').value;
-    }
-
     var imageData = canvasRoot.toDataURL();
     var imageDataRaw = imageData.replace(/^data:image\/\w+;base64,/, "");
-    console.log(imageDataRaw);
-
     return imageDataRaw;
 }
+
+var message = one.textContent + " " + two.textContent + " 😂 😂 😂";
+$('#fb-description').attr("placeholder", message);
+console.log(message);
 
 //Share Photo
 function sharePhoto() {
@@ -52,14 +48,16 @@ function sharePhoto() {
       //Image url heroku
       url = data['url'];
 
-      console.log(url);
-
       FB.login(function(response) {
 
         if (response.status === "connected") {
-          console.log("connected");
+          $('.share').text("Ligado...");
 
-          var message = document.getElementById('fb-description').value;
+          var textarea = document.getElementById('fb-description').value;
+
+          if (textarea.length > 1) {
+            message = textarea.value;
+          }
 
           //Post Photo on facebook
           FB.api(
@@ -73,7 +71,11 @@ function sharePhoto() {
               if (!response || response.error) {
                   console.log(response.error);
               } else {
-                  console.log('Published to stream - you might want to delete it now!');
+                  $('.share').text("Partilhado")
+                            .css('background', 'green');
+                  setTimeout(function() {
+                    $('.modal-facebook').fadeOut("slow");
+                  }, 3000);
               }
 
           });

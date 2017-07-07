@@ -2,7 +2,7 @@
 var root = document.documentElement;
 var canvasRoot = document.getElementById("canvas");
 
-function createCanvas(id) {
+function createCanvas(id, color) {
 	var canvas = document.getElementById(id);
 	var ctx = canvas.getContext("2d");
 
@@ -16,7 +16,7 @@ function createCanvas(id) {
 	canvas.width = size;
 	canvas.height = size;
 
-	ctx.fillStyle = "#3498DB";
+	ctx.fillStyle = color;
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 	//Logo
@@ -50,7 +50,7 @@ function createCanvas(id) {
 	ctx.stroke();
 };
 
-createCanvas("canvas");
+createCanvas("canvas", color);
 
 function dlCanvas() {
 
