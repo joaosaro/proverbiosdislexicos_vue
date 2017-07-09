@@ -1,16 +1,16 @@
 aside.toolbar
     nav.toolbar--menu
         div.options
-            button(class="refresh", onclick="newProverbio()")
+            button(class="refresh", onclick="newProverbio(true, true)")
                 span 
                     | Novo#[br]provérbio
                 figure
                     img(src="assets/images/refresh-button.svg", alt="")
-            button(id="editTo")
-                span 
-                    | Editar#[br]texto
-                figure
-                    img(src="assets/images/editor-button.svg", alt="")
+            //- button(id="editTo")
+            //-     span 
+            //-         | Editar#[br]texto
+            //-     figure
+            //-         img(src="assets/images/editor-button.svg", alt="")
             button(onclick="tooglePalette()") 
                 span 
                     | Alterar#[br]cor

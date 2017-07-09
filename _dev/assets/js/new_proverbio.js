@@ -1,21 +1,29 @@
+//Push Data
+var proverbiosA = [],
+    proverbiosB = [];
+
+for (var i = 0; i < data.length; i++) {
+  proverbiosA.push(data[i].part1);
+  proverbiosB.push(data[i].part2);
+}
+
 //Create new proverbio
 var startCount = 0;
 var proverbioPart1,
-    proverbioPart2;
+    proverbioPart2,
+    randomNumberA,
+    randomNumberB;
 
-function newProverbio(){
-  //function randomProverbios
-  var proverbiosA = [],
-			proverbiosB = [];
-
-	for (var i = 0; i < data.length; i++) {
-		proverbiosA.push(data[i].part1);
-		proverbiosB.push(data[i].part2);
-	}
-
+function newProverbio(newProverbioA, newProverbioB){
   //random numbers
-  var randomNumberA = Math.floor(Math.random() * proverbiosA.length);
-  var randomNumberB = Math.floor(Math.random() * proverbiosB.length);
+  if(newProverbioA && newProverbioB) {
+    randomNumberA = Math.floor(Math.random() * proverbiosA.length);
+    randomNumberB = Math.floor(Math.random() * proverbiosB.length);
+  } else if (newProverbioA) {
+    randomNumberA = Math.floor(Math.random() * proverbiosA.length);
+  } else if (newProverbioB) {
+    randomNumberB = Math.floor(Math.random() * proverbiosB.length);
+  }
 
   //avoid an original proverb
   while(randomNumberA === randomNumberB) {
@@ -50,4 +58,4 @@ function newProverbio(){
 	startCount++;
 };
 
-newProverbio();
+newProverbio(true, true);

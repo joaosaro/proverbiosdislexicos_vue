@@ -19,15 +19,10 @@ function createCanvas(id, color) {
 	ctx.fillStyle = color;
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-	//Logo
-	ctx.font="36px 'Raleway', sans-serif";
-	ctx.fillStyle = '#FFF';
-	ctx.fillText("P/D",20,20);
-
-	//Proverbio 1
-	ctx.font="45px 'Raleway', sans-serif";
-	ctx.fillStyle = '#FFF';
-	ctx.fillText(proverbioPart1,80,200);
+	// //Logo
+	// ctx.font="36px 'Raleway', sans-serif";
+	// ctx.fillStyle = '#FFFFFF';
+	// ctx.fillText("P/D",20,20);
 
 	//set key points
 	var middleStart = .56 * size;
@@ -53,6 +48,17 @@ function createCanvas(id, color) {
 	ctx.lineWidth = stripeWidth;
 	ctx.strokeStyle = stripeColor;
 	ctx.stroke();
+
+	base_image = new Image();
+  base_image.src = '/assets/images/logo.png';
+  base_image.onload = function(){
+    ctx.drawImage(base_image, 20, 20);
+  }
+
+	//Proverbio 1
+	ctx.font="900 45px 'Raleway', sans-serif";
+	ctx.fillStyle = '#FFFFFF';
+	ctx.fillText(proverbioPart1,80,200);
 };
 
 createCanvas("canvas", color);
