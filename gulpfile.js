@@ -54,6 +54,12 @@ gulp.task('uglify', function(){
     .pipe(gulp.dest(siteDev + minifyPath + '/js'));
 });
 
+gulp.task('jsDev', function(){
+    gulp.src(siteDev + 'assets/js/**/*.js')
+    .pipe(plumber())
+    .pipe(gulp.dest(siteDev + minifyPath + '/js'));
+});
+
 // Styles SASS - CSS
 gulp.task('sass', function(){
     return sass(siteDev + 'assets/styles/main.scss', {
@@ -114,4 +120,8 @@ gulp.task('watch', function(){
 
 gulp.task('default', function() {
     gulp.start(['uglify', 'jade', 'sass', 'images', 'watch']);
+});
+
+gulp.task('dev', function() {
+    gulp.start(['jsDev', 'sass', 'images', 'watch']);
 });
