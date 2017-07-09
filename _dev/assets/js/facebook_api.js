@@ -24,7 +24,7 @@ function createImage() {
     return imageDataRaw;
 }
 
-var message = one.textContent + " " + two.textContent + " 😂 😂 😂";
+var message = "Já o meu avô dizia: " + one.textContent + " " + two.textContent + " 😂 😂 😂 #provérbiosdisléxicos #jáomeuavôdizia";
 $('#fb-description').attr("placeholder", message);
 console.log(message);
 
@@ -72,10 +72,11 @@ function sharePhoto() {
                   console.log(response.error);
               } else {
                   $('.share').text("Partilhado")
-                            .css('background', 'green');
+                            .addClass('done');
                   setTimeout(function() {
                     $('.modal-facebook').fadeOut("slow");
                   }, 3000);
+                  window.open('http://facebook.com', '_blank');
               }
 
           });

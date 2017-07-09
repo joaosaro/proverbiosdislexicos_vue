@@ -1,5 +1,7 @@
 //Create new proverbio
 var startCount = 0;
+var proverbioPart1,
+    proverbioPart2;
 
 function newProverbio(){
   //function randomProverbios
@@ -39,6 +41,10 @@ function newProverbio(){
   } else {
     two.innerHTML = randomSentenceB;
   }
+
+  //temporary to canvas text
+  proverbioPart1 = randomSentenceA;
+  proverbioPart2 = randomSentenceB;
 
 	var backColorNum = startCount % 7 + 1;
 	startCount++;

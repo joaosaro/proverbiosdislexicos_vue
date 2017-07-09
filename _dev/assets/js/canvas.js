@@ -21,8 +21,13 @@ function createCanvas(id, color) {
 
 	//Logo
 	ctx.font="36px 'Raleway', sans-serif";
-	ctx.fillStyle = 'white';
+	ctx.fillStyle = '#FFF';
 	ctx.fillText("P/D",20,20);
+
+	//Proverbio 1
+	ctx.font="45px 'Raleway', sans-serif";
+	ctx.fillStyle = '#FFF';
+	ctx.fillText(proverbioPart1,80,200);
 
 	//set key points
 	var middleStart = .56 * size;

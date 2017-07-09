@@ -239,12 +239,10 @@ $p-margin: (100vh - $p-height)/2
 		top: 20px
 		bottom: auto
 
-	div
+	.tip
 		color: white
 		margin: 10px 10px 10px 0
 		font-weight: 300
-		text-decoration: underline
-		text-decoration-style: wavy
 		text-transform: lowercase
 
 	a
@@ -294,6 +292,7 @@ $p-margin: (100vh - $p-height)/2
 	textarea
 		width: 400px
 		max-width: 90%
+		min-height: 75px
 		margin: 0 auto
 		outline: none
 		resize: none
@@ -316,6 +315,7 @@ $p-margin: (100vh - $p-height)/2
 		margin: .25em .5em
 		font-size: .6rem
 		outline: none
+		cursor: pointer
 		background-color: $background
 
 	.cancel
@@ -326,7 +326,7 @@ $p-margin: (100vh - $p-height)/2
 		+button($background)
 
 		&.done
-			color: map-get($colorsArray, 3)
+			background-color: map-get($colorsArray, 3)
 
 
 // Footer
