@@ -1,0 +1,20 @@
+include ../../assets/images/canvas.svg
+
+mixin newSentence(func)
+    button(class="new-sentence", onclick= func)
+        img(src=imgPath + 'refresh-button.svg', title="Novo Provérbio", alt="Refresh Button")
+
+div.logo
+    div.logo-bold P/D
+    div.logo-long Provérbios Disléxicos
+
+div.proverbio
+    div.one.proverbio-container
+        #one
+        +newSentence("newProverbio(true, false)")
+
+    div.separator
+    
+    div.two.proverbio-container
+        #two
+        +newSentence("newProverbio(false, true)")

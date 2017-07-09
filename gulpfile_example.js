@@ -81,17 +81,6 @@ gulp.task('others', function(){
     gulp.start(['images', 'statics']);
 });
 
-//tinypng
-gulp.task('tinypng', function () {
-	gulp.src(siteDev + 'assets/img/**/*.{png,jpg,jpeg}')
-		.pipe(tinypng({
-			key: '', //put your key
-			sigFile: 'images/.tinypng-sigs',
-			log: true
-		}))
-		.pipe(gulp.dest(siteDev + 'assets/img/'));
-});
-
 //webserver
 gulp.task('webserver', function() {
   gulp.src('_site')

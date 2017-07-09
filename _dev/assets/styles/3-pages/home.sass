@@ -1,16 +1,23 @@
-$colorsArray: (1:#3498DB, 2:#1ABC9C, 3:#9B59B6, 4:#E67E22, 5:#E74C3C, 6:#F1C40F, 7:#27AE60)
+$imgPath: 'assets/images/'
+$colorsArray: (1: #3498DB, 2: #1DDFB9, 3: #FFFB37, 4: #9B59B6, 5: #1ABC9C, 6: #E67E22, 7: #E74C3C, 8: #F1C40F)
+$backgroundTransition: background-color 1s
 
 @each $key, $color in $colorsArray
 	.color-#{$key}
 		background-color: #{$color}
 
+\:root
+	--color: #{map-get($colorsArray, 1)}
+
+*
+	box-sizing: border-box
+
+html
+	height: 100%
+
 body
 	font-family: 'Raleway', sans-serif
-
-.toolbar,
-.social,
-.credits
-	display: none
+	min-height: 100%
 
 main
 	position: relative
@@ -18,9 +25,19 @@ main
 	height: 100vh
 	min-width: 320px
 	min-height: 320px
-	max-width: 200vh
-	max-height: 200vw
 	overflow: hidden
+
+#export-canvas
+	position: absolute
+	top: 50%
+	left: 0
+	height: 100%
+	width: 100%
+	background: transparent
+	z-index: 1000
+	display: flex
+	justify-content: center
+	align-items: center
 
 #svg-canvas
 	position: absolute
@@ -31,9 +48,8 @@ main
 	height: 100%
 	min-width: 320px
 	min-height: 320px
-	max-width: 200vh
-	max-height: 200vw
-	fill: map-get($colorsArray, 1)
+	transition: fill 1s
+	fill: var(--color)
 
 .logo
 	margin: 30px
@@ -50,33 +66,308 @@ main
 		font-size: 12px
 		letter-spacing: 2.29px
 
-$margin: 10vh
-$p-height: 100vh - $margin* 2
+	@media (max-width: 760px)
+		.logo-bold
+			font-size: 24px
+			letter-spacing: 3px
+
+		.logo-long
+			font-size: 8px
+			letter-spacing: 2px
+
+$p-height: 75vh
+$p-margin: (100vh - $p-height)/2
 .proverbio
 	position: absolute
 	top: 0
 
-	display: flex
-	flex-flow: column nowrap
-	justify-content: center
-
 	height: $p-height
 	width: 100vw
 	margin:
-		top: $margin
+		top: $p-margin
 
-	font-size: 50px
+	font-size: 6vh
 	font-weight: 700
 	color: white
 	text-transform: uppercase
 	text-align: left
 
+	@media (max-width: 760px)
+		font-size: 4vh
+
 	.one
-		margin-bottom: $margin
+		height: calc(85%/2)
+		padding-bottom: 10px
+		display: flex
+		flex-direction: column
+		justify-content: flex-end
+
+	.separator
+		height: 15%
 
 	.two
-		margin-top: $margin
+		flex: 1 1 200px
+		height: calc(85%/2)
+		padding-top: 50px
+
+	.editable
+		outline: none
+		text-decoration: underline
+			style: wavy
+			color: rgba(white, .75)
+
+	.proverbio-container
+		position: relative
+
+		> .new-sentence
+			position: absolute
+			display: block
+			width: 50px
+			height: 50px
+			top: 25px
+			left: -75px
+			background:
+				color: transparent
+			outline: none
+
+			@media (max-width: 460px)
+				top: 0
+				left: 0
+
+			img
+				height: 22px
+				width: 22px
+
+		&.one > .new-sentence
+			top: auto
+			bottom: 0
+
+			@media (max-width: 460px)
+				bottom: -40px
 
 	> div
 		width: 60vw
 		margin-left: 20vw
+
+		@media (max-width: 460px)
+			margin-left: 10%
+			max-width: 80%
+// Toolbar
+.toolbar
+	position: fixed
+	right: 0
+	top: 20%
+	transform: translateX(42%)
+	transition: transform .3s
+
+	&.is-open
+		transform: translateX(0)
+
+	@media (max-width: 460px)
+		bottom: 0
+		top: auto
+
+.toolbar--side
+	img
+		display: block
+		margin-left: auto
+		padding: 10px
+		cursor: pointer
+
+.toolbar--menu
+	display: flex
+
+	.options
+		display: flex
+		flex-flow: column nowrap
+		justify-content: center
+
+		@media (max-width: 460px)
+
+		button
+			display: flex
+			align-items: center
+			outline: none
+			cursor: pointer
+			transition: transform .3s
+			background:
+				color: transparent
+
+			&:hover
+				transform: translateX(-10px)
+
+			span
+				color: white
+				font-size: 10px
+				font-weight: 900
+				letter-spacing: 1.11px
+				line-height: 12px
+				text-transform: lowercase
+				text-align: right
+				width: 12ch
+
+			figure
+				margin: 5px 10px
+
+				img
+					height: 20px
+
+	.pallete
+		$padding: 10px
+		height: 140px
+		width: 60px + $padding * 2
+		padding: $padding 0 $padding $padding
+		border-radius: $padding 0 0 $padding
+		background: white
+		display: flex
+		flex-wrap: wrap
+		justify-content: center
+		box-shadow: 0 2px 4px rgba(black, .19)
+		overflow: hidden
+
+		&.is-open
+			transform: translateX(0)
+
+		$bt-size: 18px
+		$bt-margin: $bt-size/3
+		.color-item
+			height: $bt-size
+			width: $bt-size
+			margin: $bt-margin
+			border: 0.5px solid rgba(255,255,255,.58)
+			border-radius: 50%
+			transition: border .3s
+			box-shadow: -1 1px 2px rgba(black, .9)
+			outline: none
+
+			&.active
+				position: relative
+				&::before
+					content: ""
+					position: absolute
+					top: 0.5px
+					left: -0.5px
+					height: $bt-size
+					width: $bt-size
+					background:
+						image: url($imgPath + 'color-check.svg')
+						size: contain
+						position: center
+						repeat: no-repeat
+
+			&:hover
+				border: .5px solid #999
+
+// Social
+.social
+	position: absolute
+	bottom: 20px
+	right: 0
+
+	@media (max-width: 460px)
+		top: 20px
+		bottom: auto
+
+	.tip
+		color: white
+		margin: 10px 10px 10px 0
+		font-weight: 300
+		text-transform: lowercase
+
+	a
+		$width: 30px
+		display: block
+		width: $width
+		margin: 5px 20px
+		background: none
+		outline: none
+		cursor: pointer
+
+		@media (max-width: 460px)
+			margin-right: 5px
+
+		img
+			width: $width
+
+.modal-facebook
+	display: none
+	position: absolute
+	top: 0
+	left: 0
+	height: 100%
+	width: 100%
+	background-color: rgba(black, .7)
+	z-index: 1000
+
+	&.is-open
+		display: flex
+		justify-content: center
+		align-items: center
+		transition: all .3s
+
+.form-facebook
+	position: absolute
+	width: 500px
+	max-width: 90%
+	background: white
+	padding: 20px
+	border-radius: 10px
+	border: 1px solid #999
+	resize: none
+	display: flex
+	justify-content: center
+	flex-flow: column nowrap
+
+	textarea
+		width: 400px
+		max-width: 90%
+		min-height: 75px
+		margin: 0 auto
+		outline: none
+		resize: none
+
+	canvas
+		max-width: 90%
+		max-height: 400px
+		margin: 10px auto
+
+	.buttons
+		display: flex
+		justify-content: flex-end
+
+	=button($background: #555)
+		display: inline-block
+		color: white
+		padding: 1em 2em
+		border-radius: .5em
+		text-transform: uppercase
+		margin: .25em .5em
+		font-size: .6rem
+		outline: none
+		cursor: pointer
+		background-color: $background
+
+	.cancel
+		+button
+
+	.share
+		$background: var(--color)
+		+button($background)
+
+		&.done
+			background-color: map-get($colorsArray, 3)
+
+
+// Footer
+.footer
+	position: absolute
+	bottom: 20px
+	left: 40px
+	font-size: 14px
+	color: white
+	letter-spacing: 1.56px
+
+	@media (max-width: 460px)
+		font-size: 10px
+		bottom: 10px
+		left: 10px
