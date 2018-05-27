@@ -19,7 +19,7 @@ export default {
   margin: 0 10vw 0 15vw
 
   &__text
-    height: 38%
+    height: 40%
     font:
       size: 6vh
       weight: 700

@@ -41,7 +41,7 @@ export default {
   grid-template-columns: 1fr minmax(auto, 150px)
   grid-template-areas: "logo logo" "proverbio options" "footer options"
   grid-gap: 20px
-  height: calc(100vh - 60px)
+  height: 100vh
   padding: 30px 0 30px 30px
 
 .logo

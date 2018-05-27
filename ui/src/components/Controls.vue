@@ -1,5 +1,5 @@
 <template>
-  <div class="controls">
+  <div class="controls" :class="translatePalette">
     <div class="options">
       <control-button
         :buttonText="'Novo provérbio'"
@@ -8,16 +8,31 @@
         :buttonText="'Alterar côr'"
         :icon="'pallete-button.svg'" ></control-button>
     </div>
+    <Palette />
   </div>
 </template>
 
 <script>
 import ControlButton from './ControlButton'
+import Palette from './Palette'
 
 export default {
   name: 'Controls',
   components: {
-    ControlButton
+    ControlButton,
+    Palette
+  },
+
+  data () {
+    return {
+      isPaletteOpen: true
+    }
+  },
+
+  computed: {
+    translatePalette: function () {
+      return this.isPaletteOpen ? 'is-open' : null
+    }
   }
 }
 </script>
@@ -29,4 +44,11 @@ export default {
 .controls
   position: absolute
   right: 0
+  display: flex
+  align-items: center
+  transform: translateX(80px)
+  transition: transform .3s
+
+  &.is-open
+    transform: translateX(0)
 </style>

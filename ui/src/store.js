@@ -7,6 +7,7 @@ var colors = ['#3498DB', '#1DDFB9', '#FFFB37', '#9B59B6', '#1ABC9C', '#E67E22', 
 
 export default new Vuex.Store({
   state: {
+    colorPalette: colors,
     activeColor: colors[0]
   },
   mutations: {

@@ -40,6 +40,9 @@ export default {
   outline: none
   transition: transform .3s
 
+  &:hover
+    transform: translate(-10px)
+
   &__text
     width: 12ch
     color: $color-text
