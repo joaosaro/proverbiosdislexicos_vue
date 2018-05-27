@@ -1,0 +1,12 @@
+// 0-vendors
+@import '0-vendors/normalize';
+
+// 1-base
+@import '1-base/variables';
+@import '1-base/fonts';
+@import '1-base/general';
+
+// 2-modules
+// 3-layout
+
+// 4-components (use scoped in each component .Vue file)

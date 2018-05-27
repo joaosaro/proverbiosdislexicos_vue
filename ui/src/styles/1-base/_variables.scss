@@ -1,0 +1,15 @@
+$color-text: #FFFFFF;
+$colorsArray: (
+    1: #3498DB, 
+    2: #1DDFB9, 
+    3: #FFFB37, 
+    4: #9B59B6, 
+    5: #1ABC9C, 
+    6: #E67E22, 
+    7: #E74C3C, 
+    8: #F1C40F
+);
+
+:root {
+    --color: #{map-get($colorsArray, 1)};
+}
