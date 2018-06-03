@@ -1,9 +1,12 @@
 <template>
   <div class="controls" :class="translatePalette">
-    <div class="options">
+    <div class="controls__options">
       <control-button
         :buttonText="'Novo provérbio'"
         :icon="'refresh-button.svg'" ></control-button>
+      <control-button
+        :buttonText="'Edit text'"
+        :icon="'edit-button.svg'" ></control-button>
       <control-button
         :buttonText="'Alterar côr'"
         :icon="'pallete-button.svg'" ></control-button>
@@ -51,4 +54,7 @@ export default {
 
   &.is-open
     transform: translateX(0)
+
+  &__options > *
+    margin: 12px 0
 </style>
