@@ -38,5 +38,6 @@ export default {
   position: absolute
   height: 100vh
   width: 100vw
+  transition: fill 1s
 
 </style>

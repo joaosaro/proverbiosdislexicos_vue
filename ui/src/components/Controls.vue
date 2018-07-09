@@ -3,13 +3,14 @@
     <div class="controls__options">
       <control-button
         :buttonText="'Novo provérbio'"
-        :icon="'refresh-button.svg'" ></control-button>
+        :icon="'refresh-button.svg'" />
       <control-button
         :buttonText="'Edit text'"
-        :icon="'edit-button.svg'" ></control-button>
+        :icon="'edit-button.svg'" />
       <control-button
         :buttonText="'Alterar côr'"
-        :icon="'pallete-button.svg'" ></control-button>
+        :icon="'pallete-button.svg'"
+        @click.native="togglePalette()"/>
     </div>
     <Palette />
   </div>
@@ -26,15 +27,15 @@ export default {
     Palette
   },
 
-  data () {
-    return {
-      isPaletteOpen: true
+  computed: {
+    translatePalette: function () {
+      return this.$store.state.isPaletteOpen ? 'is-open' : null
     }
   },
 
-  computed: {
-    translatePalette: function () {
-      return this.isPaletteOpen ? 'is-open' : null
+  methods: {
+    togglePalette: function () {
+      this.$store.state.isPaletteOpen = !this.$store.state.isPaletteOpen
     }
   }
 }
