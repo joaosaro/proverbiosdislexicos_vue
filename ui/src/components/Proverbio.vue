@@ -1,14 +1,24 @@
 <template>
   <main class="proverbio">
-    <div class="proverbio__text proverbio__text--one">Melhor um pardal na mão</div>
+    <div class="proverbio__text proverbio__text--one">{{ getPart1() }}</div>
     <div class="proverbio__separator"></div>
-    <div class="proverbio__text">Quem não quer manda</div>
+    <div class="proverbio__text">{{ getPart2() }}</div>
   </main>
 </template>
 
 <script>
 export default {
-  name: 'Copyright'
+  name: 'Copyright',
+
+  methods: {
+    getPart1: function () {
+      console.log(this.$store.state)
+      return this.$store.state.proverbioDislexico.part1
+    },
+    getPart2: function () {
+      return this.$store.state.proverbioDislexico.part2
+    }
+  }
 }
 </script>
 

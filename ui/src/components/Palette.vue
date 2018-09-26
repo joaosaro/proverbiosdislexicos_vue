@@ -52,17 +52,6 @@ export default {
   justify-content: center
   overflow: hidden
 
-  // &::after
-  //   conntent: ''
-  //   display: block
-  //   position: fixed
-  //   top: 0
-  //   height: 108px
-  //   width: 120px
-  //   background:
-  //     color: orange
-  //     image: url(~@/assets/buttons/right-arrow.svg)
-
 .colors
   display: flex
   flex-direction: column
