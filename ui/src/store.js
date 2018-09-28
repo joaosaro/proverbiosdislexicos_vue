@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-import Proverbios from './data/proverbios'
+import ProverbiosFallback from './data/proverbios'
 import Colors from './data/colors'
 
 Vue.use(Vuex)
@@ -11,7 +11,7 @@ export default new Vuex.Store({
     colorPalette: Colors,
     activeColor: Colors[0],
     isPaletteOpen: false,
-    proverbios: Proverbios,
+    proverbios: ProverbiosFallback,
     proverbioDislexico: {
       part1: 'Parte1',
       part2: 'Parte2'
@@ -21,9 +21,13 @@ export default new Vuex.Store({
     setProverbiosList (state, payload) {
       state.proverbios = payload
     },
-    setProverbioDislexico (state, part1, part2) {
-      state.proverbioDislexico.part1 = part1
-      state.proverbioDislexico.part2 = part2
+    randomPart1 (state) {
+      const { proverbioDislexico, proverbios } = state
+      proverbioDislexico.part1 = proverbios[0].part1
+    },
+    randomPart2 (state) {
+      const { proverbioDislexico, proverbios } = state
+      proverbioDislexico.part2 = proverbios[1].part2
     }
   },
   actions: {
@@ -32,15 +36,24 @@ export default new Vuex.Store({
         .then(function (response) {
           const proverbios = response.data
           commit('setProverbiosList', { payload: proverbios })
-          commit('setProverbioDislexico', {
-            part1: proverbios[0].part1,
-            part2: proverbios[1].part2
-          })
           return true
         })
         .catch(function (error) {
-          console.log(error)
+          console.log('loadProverbios Action', error)
         })
+    },
+
+    randomProverbio: function ({ commit }) {
+      commit('randomPart1')
+      commit('randomPart2')
+    },
+
+    randomPart1: function ({ commit }) {
+      commit('randomPart1')
+    },
+
+    randomPart2: function ({ commit }) {
+      commit('randomPart2')
     }
   }
 })

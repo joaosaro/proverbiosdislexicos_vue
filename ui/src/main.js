@@ -12,3 +12,4 @@ new Vue({
 }).$mount('#app')
 
 store.dispatch('loadProverbios')
+store.dispatch('randomProverbio')
