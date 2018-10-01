@@ -22,7 +22,7 @@ export default {
 
   computed: {
     backgroundColor: function () {
-      const backgroundColor = this.$store.state.activeColor
+      const backgroundColor = this.$store.getters.activeColor
 
       return backgroundColor
     }

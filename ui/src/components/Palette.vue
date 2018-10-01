@@ -5,7 +5,6 @@
         :key="index"
         :value="color"
         class="colors__button"
-        :class="activeButton(index)"
         :style="{ 'background-color': color }"
         @click="updateColor(index)" />
     </div>
@@ -13,24 +12,18 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'Palette',
 
   methods: {
+    ...mapActions({
+      updateColor: 'updateColor'
+    }),
+
     getColors: function () {
       return this.$store.state.colorPalette
-    },
-
-    colorStyle: function (color) {
-      return color
-    },
-
-    activeButton: function (index) {
-      return 'color'
-    },
-
-    updateColor: function (index) {
-      this.$store.state.activeColor = this.$store.state.colorPalette[index]
     }
   }
 }
@@ -74,14 +67,14 @@ export default {
     border-color: rgba(100,100,100,0.58)
     transform: scale(1.25)
 
-  // &.active::before
-  //   content: ''
-  //   position: absolute
-  //   display: flex
-  //   justify-content: center
-  //   align-items: center
-  //   height: 60%
-  //   width: 60%
-  //   background:
-  //     image: url(~@/assets/buttons/selected-arrow.svg)
+  &.active::before
+    content: ''
+    position: absolute
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 60%
+    width: 60%
+    background:
+      image: url(~@/assets/buttons/selected-arrow.svg)
 </style>

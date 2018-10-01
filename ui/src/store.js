@@ -9,7 +9,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     colorPalette: Colors,
-    activeColor: Colors[0],
+    activeColor: 0,
     isPaletteOpen: false,
     proverbios: ProverbiosFallback,
     proverbioDislexico: {
@@ -21,6 +21,13 @@ export default new Vuex.Store({
       id2: 1
     }
   },
+
+  getters: {
+    activeColor (state) {
+      return state.colorPalette[state.activeColor]
+    }
+  },
+
   mutations: {
     setProverbiosList (state, payload) {
       state.proverbios = payload
@@ -53,8 +60,13 @@ export default new Vuex.Store({
 
     tooglePalette (state) {
       state.isPaletteOpen = !state.isPaletteOpen
+    },
+
+    setColor (state, index) {
+      state.activeColor = index
     }
   },
+
   actions: {
     loadProverbios: async function ({ commit, dispatch }) {
       axios.get('http://proverbios.joaosaro.com/backoffice/api/proverbios')
@@ -87,6 +99,10 @@ export default new Vuex.Store({
 
     togglePalette: function ({ commit }) {
       commit('tooglePalette')
+    },
+
+    updateColor: function ({ commit }, index) {
+      commit('setColor', index)
     }
   }
 })
