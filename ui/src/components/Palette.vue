@@ -5,6 +5,7 @@
         :key="index"
         :value="color"
         class="colors__button"
+        :class="{ active: isActive(index) }"
         :style="{ 'background-color': color }"
         @click="updateColor(index)" />
     </div>
@@ -24,6 +25,10 @@ export default {
 
     getColors: function () {
       return this.$store.state.colorPalette
+    },
+
+    isActive: function (index) {
+      return this.$store.state.activeColor === index
     }
   }
 }
@@ -70,11 +75,13 @@ export default {
   &.active::before
     content: ''
     position: absolute
-    display: flex
-    justify-content: center
-    align-items: center
-    height: 60%
-    width: 60%
+    top: 2px
+    left: 0
+    height: 100%
+    width: 100%
     background:
       image: url(~@/assets/buttons/selected-arrow.svg)
+      size: 100%
+      position: center
+      repeat: no-repeat
 </style>
