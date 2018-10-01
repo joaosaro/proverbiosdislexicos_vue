@@ -13,8 +13,8 @@ export default new Vuex.Store({
     isPaletteOpen: false,
     proverbios: ProverbiosFallback,
     proverbioDislexico: {
-      part1: 'Provérbio 1',
-      part2: 'Provérbio 2'
+      part1: '',
+      part2: ''
     },
     proverbioId: {
       id1: 0,
@@ -25,43 +25,68 @@ export default new Vuex.Store({
     setProverbiosList (state, payload) {
       state.proverbios = payload
     },
-    randomPart1 (state) {
-      const { proverbioDislexico, proverbios, proverbioId } = state
-      proverbioDislexico.part1 = proverbios[0].part1
-    },
-    randomPart2 (state) {
-      const { proverbioDislexico, proverbios } = state
-      const { id2 } = state.proverbioId
 
-      proverbioDislexico.part2 = proverbios[id2].part2
+    setRandomId (state, partParam) {
+      const { proverbios } = state
+      const id = 'id' + partParam
+      const otherId = id === 'id1' ? 'id2' : 'id1'
+
+      let proverbioId = Math.floor((Math.random() * proverbios.length))
+
+      while (proverbioId === state.proverbioId[otherId]) {
+        proverbioId = Math.floor((Math.random() * proverbios.length))
+      }
+
+      state.proverbioId[id] = proverbioId
+    },
+
+    setRandomPart (state, partParam) {
+      const { proverbioDislexico, proverbios } = state
+
+      const id = 'id' + partParam
+      const part = 'part' + partParam
+      const idNr = state.proverbioId[id]
+      const proverbio = proverbios[idNr]
+
+      proverbioDislexico[part] = proverbio[part]
+    },
+
+    tooglePalette (state) {
+      state.isPaletteOpen = !state.isPaletteOpen
     }
   },
   actions: {
-    loadProverbios: async function ({ commit, state }) {
+    loadProverbios: async function ({ commit, dispatch }) {
       axios.get('http://proverbios.joaosaro.com/backoffice/api/proverbios')
         .then(function (response) {
           const proverbios = response.data
           commit('setProverbiosList', proverbios)
-          commit('randomPart1')
-          commit('randomPart2')
+          dispatch('randomProverbio')
           return true
         })
         .catch(function (error) {
           console.log('loadProverbios Action', error)
+          dispatch('randomProverbio')
         })
     },
 
-    randomProverbio: function ({ commit }) {
-      commit('randomPart1')
-      commit('randomPart2')
+    randomProverbio: function ({ commit, dispatch }) {
+      dispatch('randomPart1')
+      dispatch('randomPart2')
     },
 
     randomPart1: function ({ commit }) {
-      commit('randomPart1')
+      commit('setRandomId', 1)
+      commit('setRandomPart', 1)
     },
 
     randomPart2: function ({ commit }) {
-      commit('randomPart2')
+      commit('setRandomId', 2)
+      commit('setRandomPart', 2)
+    },
+
+    togglePalette: function ({ commit }) {
+      commit('tooglePalette')
     }
   }
 })

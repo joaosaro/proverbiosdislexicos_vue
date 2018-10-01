@@ -3,7 +3,8 @@
     <div class="controls__options">
       <control-button
         :buttonText="'Novo provérbio'"
-        :icon="'refresh-button.svg'" />
+        :icon="'refresh-button.svg'"
+        @click.native="newProverbio()" />
       <control-button
         :buttonText="'Edit text'"
         :icon="'edit-button.svg'" />
@@ -19,6 +20,7 @@
 <script>
 import ControlButton from './ControlButton'
 import Palette from './Palette'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Controls',
@@ -34,9 +36,11 @@ export default {
   },
 
   methods: {
-    togglePalette: function () {
-      this.$store.state.isPaletteOpen = !this.$store.state.isPaletteOpen
-    }
+    ...mapActions({
+      newProverbio: 'randomProverbio',
+      togglePalette: 'togglePalette'
+
+    })
   }
 }
 </script>
