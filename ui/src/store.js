@@ -12,10 +12,6 @@ export default new Vuex.Store({
     activeColor: 0,
     isPaletteOpen: false,
     proverbios: ProverbiosFallback,
-    proverbioDislexico: {
-      part1: '',
-      part2: ''
-    },
     proverbioId: {
       id1: 0,
       id2: 1
@@ -23,8 +19,22 @@ export default new Vuex.Store({
   },
 
   getters: {
+    proverbioDislexico (state) {
+      const { proverbios, proverbioId } = state
+
+      const { part1 } = proverbios[proverbioId.id1]
+      const { part2 } = proverbios[proverbioId.id2]
+
+      return {
+        part1: part1,
+        part2: part2
+      }
+    },
+
     activeColor (state) {
-      return state.colorPalette[state.activeColor]
+      const { colorPalette, activeColor } = state
+
+      return colorPalette[activeColor]
     }
   },
 
@@ -45,17 +55,6 @@ export default new Vuex.Store({
       }
 
       state.proverbioId[id] = proverbioId
-    },
-
-    setRandomPart (state, partParam) {
-      const { proverbioDislexico, proverbios } = state
-
-      const id = 'id' + partParam
-      const part = 'part' + partParam
-      const idNr = state.proverbioId[id]
-      const proverbio = proverbios[idNr]
-
-      proverbioDislexico[part] = proverbio[part]
     },
 
     tooglePalette (state) {
@@ -82,19 +81,17 @@ export default new Vuex.Store({
         })
     },
 
-    randomProverbio: function ({ commit, dispatch }) {
+    randomProverbio: function ({ dispatch }) {
       dispatch('randomPart1')
       dispatch('randomPart2')
     },
 
     randomPart1: function ({ commit }) {
       commit('setRandomId', 1)
-      commit('setRandomPart', 1)
     },
 
     randomPart2: function ({ commit }) {
       commit('setRandomId', 2)
-      commit('setRandomPart', 2)
     },
 
     togglePalette: function ({ commit }) {

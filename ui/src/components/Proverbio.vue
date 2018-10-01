@@ -1,21 +1,30 @@
 <template>
   <main class="proverbio">
-    <div class="proverbio__text proverbio__text--one">{{ getPart1() }}</div>
+    <div class="proverbio__text proverbio__text--one">{{ part1 }}</div>
     <div class="proverbio__separator"></div>
-    <div class="proverbio__text">{{ getPart2() }}</div>
+    <div class="proverbio__text">{{ part2 }}</div>
   </main>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'Copyright',
 
-  methods: {
-    getPart1: function () {
-      return this.$store.state.proverbioDislexico.part1
+  computed: {
+    ...mapGetters({
+      proverbioDislexico: 'proverbioDislexico'
+    }),
+
+    part1 () {
+      const { part1 } = this.proverbioDislexico
+      return part1
     },
-    getPart2: function () {
-      return this.$store.state.proverbioDislexico.part2
+
+    part2 () {
+      const { part2 } = this.proverbioDislexico
+      return part2
     }
   }
 }
