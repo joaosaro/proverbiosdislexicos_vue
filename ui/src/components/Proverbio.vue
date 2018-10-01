@@ -12,7 +12,6 @@ export default {
 
   methods: {
     getPart1: function () {
-      console.log(this.$store.state)
       return this.$store.state.proverbioDislexico.part1
     },
     getPart2: function () {
