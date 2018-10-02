@@ -1,8 +1,8 @@
 <template>
   <main class="proverbio">
-    <div class="proverbio__text proverbio__text--one">{{ part1 }}</div>
+    <div class="proverbio__text proverbio__text--one" :contenteditable="isProverbioEditable">{{ part1 }}</div>
     <div class="proverbio__separator"></div>
-    <div class="proverbio__text">{{ part2 }}</div>
+    <div class="proverbio__text" :contenteditable="isProverbioEditable">{{ part2 }}</div>
   </main>
 </template>
 
@@ -14,7 +14,8 @@ export default {
 
   computed: {
     ...mapGetters({
-      proverbioDislexico: 'proverbioDislexico'
+      proverbioDislexico: 'proverbioDislexico',
+      isProverbioEditable: 'isProverbioEditable'
     }),
 
     part1 () {

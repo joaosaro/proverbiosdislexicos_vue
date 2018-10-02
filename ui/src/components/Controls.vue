@@ -6,8 +6,9 @@
         :icon="'refresh-button.svg'"
         @click.native="newProverbio()" />
       <control-button
-        :buttonText="'Edit text'"
-        :icon="'edit-button.svg'" />
+        :buttonText="editableText"
+        :icon="'edit-button.svg'"
+        @click.native="toggleEditable()" />
       <control-button
         :buttonText="'Alterar côr'"
         :icon="'pallete-button.svg'"
@@ -29,6 +30,12 @@ export default {
     Palette
   },
 
+  data () {
+    return {
+      editableText: 'Editar texto'
+    }
+  },
+
   computed: {
     translatePalette: function () {
       return this.$store.state.isPaletteOpen ? 'is-open' : null
@@ -38,9 +45,27 @@ export default {
   methods: {
     ...mapActions({
       newProverbio: 'randomProverbio',
-      togglePalette: 'togglePalette'
+      togglePalette: 'togglePalette',
+      toggleEditableProverbio: 'toggleEditableProverbio'
+    }),
 
-    })
+    toggleEditable: function () {
+      const { isProverbioEditable } = this.$store.getters
+      const isToSave = isProverbioEditable // should be reversed
+      const customProverbio = {
+        part1: '',
+        part2: ''
+      }
+
+      this.editableText = isToSave ? 'Salvar texto' : 'Editar texto' // should be reversed
+
+      if (isToSave) {
+        customProverbio.part1 = 'novo provérbio'
+        customProverbio.part2 = 'para salvar'
+      }
+
+      return this.toggleEditableProverbio(customProverbio)
+    }
   }
 }
 </script>

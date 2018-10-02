@@ -15,6 +15,11 @@ export default new Vuex.Store({
     proverbioId: {
       id1: 0,
       id2: 1
+    },
+    proverbioEditable: false,
+    customProverbio: {
+      part1: '',
+      part2: ''
     }
   },
 
@@ -35,6 +40,10 @@ export default new Vuex.Store({
       const { colorPalette, activeColor } = state
 
       return colorPalette[activeColor]
+    },
+
+    isProverbioEditable (state) {
+      return state.proverbioEditable
     }
   },
 
@@ -63,6 +72,14 @@ export default new Vuex.Store({
 
     setColor (state, index) {
       state.activeColor = index
+    },
+
+    setEditableProverbio (state, payload) {
+      state.proverbioEditable = payload
+    },
+
+    setCustomProverbio (state, payload) {
+      state.customProverbio = payload
     }
   },
 
@@ -100,6 +117,17 @@ export default new Vuex.Store({
 
     updateColor: function ({ commit }, index) {
       commit('setColor', index)
+    },
+
+    toggleEditableProverbio: function ({ commit, state }, customProverbio) {
+      const isToSave = state.proverbioEditable
+
+      if (isToSave) {
+        commit('setCustomProverbio', customProverbio)
+      }
+
+      commit('setEditableProverbio', !state.proverbioEditable)
+      console.log(state.customProverbio)
     }
   }
 })
