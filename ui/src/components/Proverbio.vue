@@ -36,6 +36,7 @@ export default {
 
 .proverbio
   margin: 0 10vw 0 15vw
+  overflow-x: hidden
 
   &__text
     height: 40%
@@ -43,6 +44,10 @@ export default {
       size: 6vh
       weight: 700
     text-transform: uppercase
+
+    &[contenteditable="true"]
+      outline: none
+      text-decoration: underline dashed
 
   &__text--one
     display: flex

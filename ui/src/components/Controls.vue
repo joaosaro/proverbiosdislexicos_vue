@@ -49,20 +49,29 @@ export default {
       toggleEditableProverbio: 'toggleEditableProverbio'
     }),
 
+    getCustomProverbio: function () {
+      const part1 = document.querySelector('.proverbio__text--one').textContent
+      const part2 = document.querySelector('.proverbio__text--two').textContent
+
+      return {
+        part1: part1,
+        part2: part2
+      }
+    },
+
     toggleEditable: function () {
       const { isProverbioEditable } = this.$store.getters
-      const isToSave = isProverbioEditable // should be reversed
-      const customProverbio = {
+      const isToSave = !isProverbioEditable // should be reversed
+      let customProverbio = {
         part1: '',
         part2: ''
       }
 
-      this.editableText = isToSave ? 'Salvar texto' : 'Editar texto' // should be reversed
+      this.editableText = isToSave ? 'Salvar texto' : 'Editar texto'
 
-      if (isToSave) {
-        customProverbio.part1 = 'novo provérbio'
-        customProverbio.part2 = 'para salvar'
-      }
+      // if (isToSave) {
+      //   customProverbio = this.getCustomProverbio()
+      // }
 
       return this.toggleEditableProverbio(customProverbio)
     }
