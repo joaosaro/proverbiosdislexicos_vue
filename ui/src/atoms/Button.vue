@@ -1,7 +1,7 @@
 <template>
-  <button class="controls__button">
-    <span class="controls__button__text">{{ buttonText }}</span>
-    <img class="controls__button__icon" :src="iconImage" :alt="buttonText">
+  <button class="button">
+    <span class="button__text">{{ buttonText }}</span>
+    <img class="button__icon" :src="iconImage" :alt="buttonText">
   </button>
 </template>
 
@@ -27,11 +27,10 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="sass">
 @import '~@/styles/main.scss'
 
-.controls__button
+.button
   display: flex
   align-items: center
   border: none
@@ -41,7 +40,7 @@ export default {
   transition: transform .3s
 
   &:hover
-    transform: translate(-10px)
+    transform: translateX(-10px)
 
   &__text
     width: 12ch

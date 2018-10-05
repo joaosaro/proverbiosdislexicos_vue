@@ -1,8 +1,10 @@
 <template>
-  <small class="credits">
-    © 2017 Powered by
-    <strong>Voodoo Colective</strong>
-  </small>
+  <footer class="footer">
+    <small class="credits">
+      © 2017 Powered by
+      <strong>Voodoo Colective</strong>
+    </small>
+  </footer>
 </template>
 
 <script>

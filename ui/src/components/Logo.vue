@@ -1,7 +1,7 @@
 <template>
   <div class="logo">
-    <div class="logo-bold">P/D</div>
-    <div class="logo-long">Provérbios Disléxicos</div>
+    <div class="logo__bold">P/D</div>
+    <div class="logo__long">Provérbios Disléxicos</div>
   </div>
 </template>
 
@@ -16,13 +16,13 @@ export default {
 @import '~@/styles/main.scss'
 
 .logo
-  .logo-bold
+  &__bold
     font:
       size: 36px
       weight: 900
     letter-spacing: 3.6px
 
-  .logo-long
+  &__long
     font:
       size: 12px
       weight: 300

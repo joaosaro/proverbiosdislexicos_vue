@@ -7,9 +7,7 @@
     <aside class="options">
       <Controls />
     </aside>
-    <footer class="footer">
-      <Copyright />
-    </footer>
+    <Footer />
   </div>
 </template>
 
@@ -17,7 +15,7 @@
 import Logo from './Logo'
 import Proverbio from './Proverbio'
 import Controls from './Controls'
-import Copyright from './Copyright'
+import Footer from './Footer'
 
 export default {
   name: 'HomeGrid',
@@ -25,7 +23,7 @@ export default {
     Logo,
     Proverbio,
     Controls,
-    Copyright
+    Footer
   }
 }
 </script>

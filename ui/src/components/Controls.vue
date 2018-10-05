@@ -1,15 +1,15 @@
 <template>
   <div class="controls" :class="translatePalette">
     <div class="controls__options">
-      <control-button
+      <Button
         :buttonText="'Novo provérbio'"
         :icon="'refresh-button.svg'"
         @click.native="newProverbio()" />
-      <control-button
+      <Button
         :buttonText="editableText"
         :icon="'edit-button.svg'"
         @click.native="toggleEditable()" />
-      <control-button
+      <Button
         :buttonText="'Alterar côr'"
         :icon="'pallete-button.svg'"
         @click.native="togglePalette()"/>
@@ -19,14 +19,14 @@
 </template>
 
 <script>
-import ControlButton from './ControlButton'
+import Button from '../atoms/Button'
 import Palette from './Palette'
 import { mapActions } from 'vuex'
 
 export default {
   name: 'Controls',
   components: {
-    ControlButton,
+    Button,
     Palette
   },
 
@@ -69,17 +69,12 @@ export default {
 
       this.editableText = isToSave ? 'Salvar texto' : 'Editar texto'
 
-      // if (isToSave) {
-      //   customProverbio = this.getCustomProverbio()
-      // }
-
       return this.toggleEditableProverbio(customProverbio)
     }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="sass">
 @import '~@/styles/main.scss'
 
