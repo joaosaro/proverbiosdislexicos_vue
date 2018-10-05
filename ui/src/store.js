@@ -127,7 +127,6 @@ export default new Vuex.Store({
       }
 
       commit('setEditableProverbio', !state.proverbioEditable)
-      console.log(state.customProverbio)
     }
   }
 })
