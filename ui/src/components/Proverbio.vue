@@ -1,31 +1,42 @@
 <template>
   <main class="proverbio">
-    <div class="proverbio__text proverbio__text--one" :contenteditable="isProverbioEditable">{{ part1 }}</div>
+    <div class="proverbio__text proverbio__text--one"
+      :contenteditable="isProverbioEditable"
+      @keyup="updateCustomProverbio(1)"
+      ref="proverbio1">
+      {{ proverbioDislexico.part1 }}
+    </div>
     <div class="proverbio__separator"></div>
-    <div class="proverbio__text" :contenteditable="isProverbioEditable">{{ part2 }}</div>
+    <div class="proverbio__text"
+      :contenteditable="isProverbioEditable"
+      @keyup="updateCustomProverbio(2)"
+      ref="proverbio2">
+      {{ proverbioDislexico.part2 }}
+    </div>
   </main>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  name: 'Copyright',
+  name: 'Proverbio',
 
   computed: {
     ...mapGetters({
       proverbioDislexico: 'proverbioDislexico',
       isProverbioEditable: 'isProverbioEditable'
+    })
+  },
+
+  methods: {
+    ...mapActions({
+      printProverbioPart: 'printProverbioPart'
     }),
 
-    part1 () {
-      const { part1 } = this.proverbioDislexico
-      return part1
-    },
-
-    part2 () {
-      const { part2 } = this.proverbioDislexico
-      return part2
+    updateCustomProverbio (part) {
+      if (!this.isProverbioEditable) return
+      this.printProverbioPart([part, this.$refs.proverbio1.textContent])
     }
   }
 }

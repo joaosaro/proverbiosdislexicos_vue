@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-import ProverbiosFallback from './data/proverbios'
+import { EMPTY_PROV as EmptyProverbios, PROVERBIOS_FALLBACK as ProverbiosFallback } from './data/proverbios'
 import Colors from './data/colors'
 
 Vue.use(Vuex)
@@ -11,28 +11,23 @@ export default new Vuex.Store({
     colorPalette: Colors,
     activeColor: 0,
     isPaletteOpen: false,
-    proverbios: ProverbiosFallback,
+    proverbios: EmptyProverbios,
     proverbioId: {
       id1: 0,
       id2: 1
     },
-    proverbioEditable: false,
-    customProverbio: {
+    proverbioPrinted: {
       part1: '',
       part2: ''
-    }
+    },
+    proverbioEditable: false
   },
 
   getters: {
     proverbioDislexico (state) {
-      const { proverbios, proverbioId } = state
-
-      const { part1 } = proverbios[proverbioId.id1]
-      const { part2 } = proverbios[proverbioId.id2]
-
       return {
-        part1: part1,
-        part2: part2
+        part1: state.proverbioPrinted.part1,
+        part2: state.proverbioPrinted.part2
       }
     },
 
@@ -66,6 +61,13 @@ export default new Vuex.Store({
       state.proverbioId[id] = proverbioId
     },
 
+    setPoverbioPrinted (state, { partParam, text }) {
+      const { proverbioPrinted } = state
+      const part = 'part' + partParam
+
+      proverbioPrinted[part] = text
+    },
+
     tooglePalette (state) {
       state.isPaletteOpen = !state.isPaletteOpen
     },
@@ -76,39 +78,47 @@ export default new Vuex.Store({
 
     setEditableProverbio (state, payload) {
       state.proverbioEditable = payload
-    },
-
-    setCustomProverbio (state, payload) {
-      state.customProverbio = payload
     }
   },
 
   actions: {
-    loadProverbios: async function ({ commit, dispatch }) {
+    loadProverbios: async function ({ commit, dispatch, state }) {
       axios.get('http://proverbios.joaosaro.com/backoffice/api/proverbios')
         .then(function (response) {
           const proverbios = response.data
           commit('setProverbiosList', proverbios)
           dispatch('randomProverbio')
+          dispatch('printProverbio')
           return true
         })
         .catch(function (error) {
           console.log('loadProverbios Action', error)
+          commit('setProverbiosList', ProverbiosFallback)
           dispatch('randomProverbio')
+          return true
         })
     },
 
     randomProverbio: function ({ dispatch }) {
-      dispatch('randomPart1')
-      dispatch('randomPart2')
+      dispatch('randomPart', 1)
+      dispatch('randomPart', 2)
     },
 
-    randomPart1: function ({ commit }) {
-      commit('setRandomId', 1)
+    randomPart: function ({commit}, part) {
+      commit('setRandomId', part)
     },
 
-    randomPart2: function ({ commit }) {
-      commit('setRandomId', 2)
+    printProverbio: function ({ dispatch }) {
+      dispatch('printProverbioPart', [1])
+      dispatch('printProverbioPart', [2])
+    },
+
+    printProverbioPart: function ({commit, state}, [part, customText]) {
+      const { proverbios, proverbioId } = state
+      const proverbioObj = proverbios[proverbioId['id' + part]]
+      const text = customText || proverbioObj['part' + part]
+
+      commit('setPoverbioPrinted', { partParam: part, text })
     },
 
     togglePalette: function ({ commit }) {
@@ -119,13 +129,7 @@ export default new Vuex.Store({
       commit('setColor', index)
     },
 
-    toggleEditableProverbio: function ({ commit, state }, customProverbio) {
-      const isToSave = state.proverbioEditable
-
-      if (isToSave) {
-        commit('setCustomProverbio', customProverbio)
-      }
-
+    toggleEditableProverbio: function ({ commit, dispatch, state }, customProverbio) {
       commit('setEditableProverbio', !state.proverbioEditable)
     }
   }

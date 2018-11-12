@@ -49,19 +49,9 @@ export default {
       toggleEditableProverbio: 'toggleEditableProverbio'
     }),
 
-    getCustomProverbio: function () {
-      const part1 = document.querySelector('.proverbio__text--one').textContent
-      const part2 = document.querySelector('.proverbio__text--two').textContent
-
-      return {
-        part1: part1,
-        part2: part2
-      }
-    },
-
     toggleEditable: function () {
       const { isProverbioEditable } = this.$store.getters
-      const isToSave = !isProverbioEditable // should be reversed
+      const isToSave = !isProverbioEditable
       let customProverbio = {
         part1: '',
         part2: ''

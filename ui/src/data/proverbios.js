@@ -1,4 +1,9 @@
-const Proverbios = [
+export const EMPTY_PROV = [
+  { 'id': 1, 'part1': '', 'part2': '', 'language': 'pt-pt', 'active': 1 },
+  { 'id': 2, 'part1': '', 'part2': '', 'language': 'pt-pt', 'active': 1 }
+]
+
+export const PROVERBIOS_FALLBACK = [
   {
     'id': 1,
     'part1': 'Mais vale um pássaro na mão',
@@ -35,5 +40,3 @@ const Proverbios = [
     'active': 1
   }
 ]
-
-export default Proverbios
