@@ -39,6 +39,10 @@ export default new Vuex.Store({
 
     isProverbioEditable (state) {
       return state.proverbioEditable
+    },
+
+    isPaletteOpen (state) {
+      return state.isPaletteOpen
     }
   },
 

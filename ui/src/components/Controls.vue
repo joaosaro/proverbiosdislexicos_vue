@@ -38,7 +38,7 @@ export default {
 
   computed: {
     translatePalette: function () {
-      return this.$store.state.isPaletteOpen ? 'is-open' : null
+      return this.$store.getters.isPaletteOpen ? 'is-open' : null
     }
   },
 
