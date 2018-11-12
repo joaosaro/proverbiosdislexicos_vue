@@ -108,8 +108,9 @@ export default new Vuex.Store({
       dispatch('randomPart', 2)
     },
 
-    randomPart: function ({commit}, part) {
+    randomPart: function ({ commit, dispatch }, part) {
       commit('setRandomId', part)
+      dispatch('printProverbioPart', [part])
     },
 
     printProverbio: function ({ dispatch }) {
