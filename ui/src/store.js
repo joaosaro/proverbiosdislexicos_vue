@@ -16,6 +16,10 @@ export default new Vuex.Store({
       id1: 0,
       id2: 1
     },
+    customProverbio: {
+      part1: '',
+      part2: ''
+    },
     proverbioPrinted: {
       part1: '',
       part2: ''
@@ -82,6 +86,13 @@ export default new Vuex.Store({
 
     setEditableProverbio (state, payload) {
       state.proverbioEditable = payload
+    },
+
+    setCustomProverbio (state, { partParam, text }) {
+      const { customProverbio } = state
+      const part = 'part' + partParam
+
+      customProverbio[part] = text
     }
   },
 
@@ -113,9 +124,10 @@ export default new Vuex.Store({
       dispatch('printProverbioPart', [part])
     },
 
-    printProverbio: function ({ dispatch }) {
-      dispatch('printProverbioPart', [1])
-      dispatch('printProverbioPart', [2])
+    printProverbio: function ({ dispatch }, customProverbio) {
+      const { part1, part2 } = customProverbio
+      dispatch('printProverbioPart', [1, part1])
+      dispatch('printProverbioPart', [2, part2])
     },
 
     printProverbioPart: function ({commit, state}, [part, customText]) {
@@ -126,6 +138,22 @@ export default new Vuex.Store({
       commit('setPoverbioPrinted', { partParam: part, text })
     },
 
+    customProverbio: function ({ dispatch, state }, customProverbio) {
+      const { part1, part2 } = customProverbio
+      dispatch('printProverbioPart', [1, part1])
+      dispatch('printProverbioPart', [2, part2])
+      console.log('customProverbio', state)
+    },
+
+    customProverbioPart: function ({commit, state}, [part, customText]) {
+      const { proverbios, proverbioId } = state
+      const proverbioObj = proverbios[proverbioId['id' + part]]
+      const text = customText || proverbioObj['part' + part]
+
+      commit('setCustomProverbio', { partParam: part, text })
+      console.log('setPart', state)
+    },
+
     togglePalette: function ({ commit }) {
       commit('tooglePalette')
     },
@@ -134,7 +162,7 @@ export default new Vuex.Store({
       commit('setColor', index)
     },
 
-    toggleEditableProverbio: function ({ commit, dispatch, state }, customProverbio) {
+    toggleEditableProverbio: function ({ commit, state }) {
       commit('setEditableProverbio', !state.proverbioEditable)
     }
   }

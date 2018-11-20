@@ -31,13 +31,14 @@ export default {
 
   methods: {
     ...mapActions({
-      printProverbioPart: 'printProverbioPart'
+      printProverbioPart: 'printProverbioPart',
+      customProverbioPart: 'customProverbioPart'
     }),
 
     updateCustomProverbio (part) {
       if (!this.isProverbioEditable) return
       const $refPart = this.$refs['proverbio' + part]
-      this.printProverbioPart([part, $refPart.textContent])
+      this.customProverbioPart([part, $refPart.textContent])
     },
 
     breakSentence (sentence) {

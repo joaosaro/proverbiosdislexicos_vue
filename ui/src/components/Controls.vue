@@ -46,18 +46,22 @@ export default {
     ...mapActions({
       newProverbio: 'randomProverbio',
       togglePalette: 'togglePalette',
-      toggleEditableProverbio: 'toggleEditableProverbio'
+      toggleEditableProverbio: 'toggleEditableProverbio',
+      customProverbio: 'customProverbio'
     }),
 
     toggleEditable: function () {
+      console.log('toggleEditable')
       const { isProverbioEditable } = this.$store.getters
-      const isToSave = !isProverbioEditable
+      const isToSave = isProverbioEditable
       let customProverbio = {
         part1: '',
         part2: ''
       }
 
-      this.editableText = isToSave ? 'Salvar texto' : 'Editar texto'
+      this.editableText = isToSave ? 'Editar texto' : 'Salvar texto'
+      console.log(isToSave)
+      if (isToSave) this.customProverbio(customProverbio)
 
       return this.toggleEditableProverbio(customProverbio)
     }
