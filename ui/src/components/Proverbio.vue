@@ -36,7 +36,8 @@ export default {
 
     updateCustomProverbio (part) {
       if (!this.isProverbioEditable) return
-      this.printProverbioPart([part, this.$refs.proverbio1.textContent])
+      const $refPart = this.$refs['proverbio' + part]
+      this.printProverbioPart([part, $refPart.textContent])
     },
 
     breakSentence (sentence) {
