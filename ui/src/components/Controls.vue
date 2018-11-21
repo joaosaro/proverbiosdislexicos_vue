@@ -21,7 +21,7 @@
 <script>
 import Button from '../atoms/Button'
 import Palette from './Palette'
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Controls',
@@ -37,6 +37,10 @@ export default {
   },
 
   computed: {
+    ...mapGetters({
+      customProverbioState: 'customProverbioState'
+    }),
+
     translatePalette: function () {
       return this.$store.getters.isPaletteOpen ? 'is-open' : null
     }
@@ -51,19 +55,14 @@ export default {
     }),
 
     toggleEditable: function () {
-      console.log('toggleEditable')
       const { isProverbioEditable } = this.$store.getters
       const isToSave = isProverbioEditable
-      let customProverbio = {
-        part1: '',
-        part2: ''
-      }
 
       this.editableText = isToSave ? 'Editar texto' : 'Salvar texto'
-      console.log(isToSave)
-      if (isToSave) this.customProverbio(customProverbio)
 
-      return this.toggleEditableProverbio(customProverbio)
+      if (isToSave) this.customProverbio(this.customProverbioState)
+
+      return this.toggleEditableProverbio()
     }
   }
 }

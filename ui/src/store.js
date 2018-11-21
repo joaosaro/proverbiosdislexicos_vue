@@ -35,6 +35,13 @@ export default new Vuex.Store({
       }
     },
 
+    customProverbioState (state) {
+      return {
+        part1: state.customProverbio.part1,
+        part2: state.customProverbio.part2
+      }
+    },
+
     activeColor (state) {
       const { colorPalette, activeColor } = state
 
@@ -124,10 +131,9 @@ export default new Vuex.Store({
       dispatch('printProverbioPart', [part])
     },
 
-    printProverbio: function ({ dispatch }, customProverbio) {
-      const { part1, part2 } = customProverbio
-      dispatch('printProverbioPart', [1, part1])
-      dispatch('printProverbioPart', [2, part2])
+    printProverbio: function ({ dispatch }) {
+      dispatch('printProverbioPart', [1])
+      dispatch('printProverbioPart', [2])
     },
 
     printProverbioPart: function ({commit, state}, [part, customText]) {
