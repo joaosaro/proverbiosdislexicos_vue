@@ -1,5 +1,5 @@
 <template>
-  <canvas id="canvas" ref="canvas"></canvas>
+  <canvas id="canvas" ref="canvas" :class="debugCanvas"></canvas>
 </template>
 
 <script>
@@ -7,6 +7,12 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'Canvas',
+
+  data () {
+    return {
+      debugCanvasMode: false
+    }
+  },
 
   mounted () {
     this.createCanvas('canvas', this.activeColor, this.proverbioDislexico)
@@ -26,7 +32,11 @@ export default {
     ...mapGetters({
       proverbioDislexico: 'proverbioDislexico',
       activeColor: 'activeColor'
-    })
+    }),
+
+    debugCanvas: function () {
+      return this.debugCanvasMode && 'debug'
+    }
   },
 
   methods: {
@@ -122,8 +132,12 @@ export default {
 
 #canvas
   position: absolute
-  top: 50%
-  left: 50%
-  transform: translate(-50%, -50%)
+  left: -5000px
+  top: -5000px
+
+  &.debug
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
 
 </style>
