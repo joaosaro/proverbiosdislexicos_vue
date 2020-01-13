@@ -1,17 +1,22 @@
 <template>
   <div class="home">
-    <img src="../assets/logo.svg">
+    <Background />
+    <HomeGrid />
+    <Canvas />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
+import Background from '@/components/Background.vue'
+import HomeGrid from '@/components/HomeGrid.vue'
+import Canvas from '@/components/Canvas.vue'
 
 export default {
   name: 'home',
   components: {
-    // HelloWorld
+    Background,
+    HomeGrid,
+    Canvas
   }
 }
 </script>

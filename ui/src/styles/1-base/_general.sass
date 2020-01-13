@@ -1,13 +1,18 @@
 html,
 body
   height: 100%
+  width: 100%
+  overflow-x: hidden
+
+*,
+*::before,
+*::after
+  box-sizing: border-box
   
 #app
-  display: grid
   height: 100vh
-  padding: 30px
   font-family: 'Raleway', Helvetica, sans-serif
-  -webkit-font-smoothing: antialiased
+  // -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
   color: $color-text
   background-color: var(--color, #3498DB)
