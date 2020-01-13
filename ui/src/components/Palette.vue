@@ -52,7 +52,6 @@ export default {
 
 .colors
   display: flex
-  flex-direction: column
   flex-wrap: wrap
   align-content: space-around
   justify-content: space-around
